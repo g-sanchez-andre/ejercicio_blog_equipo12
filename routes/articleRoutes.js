@@ -6,9 +6,7 @@ const articleController = require("../controllers/articleController");
 // ...
 
 router.get("/", articleController.index);
-router.get("/crear", (req, res) => {
-  return res.send("ok");
-});
+router.get("/crear", articleController.create);
 router.post("/", articleController.store);
 router.get("/:id", articleController.show);
 router.get("/:id/editar", articleController.edit);
