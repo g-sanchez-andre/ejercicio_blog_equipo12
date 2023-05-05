@@ -4,13 +4,22 @@ const { Article } = require("../models");
 async function index(req, res) {
   const article = await Article.findAll();
   article.forEach((article) => {
-    console.log(article.dataValues.id, article.dataValues.title);
+    console.log(article.id, article.title);
   });
-  res.render("article", article);
+  res.render("article", {
+    article: article,
+  });
 }
 
 // Display the specified resource.
-async function show(req, res) {}
+async function show(req, res) {
+  const articleId = req.params.id;
+  const article = await Article.findByPk(articleId);
+
+  res.render("article", {
+    article: article,
+  });
+}
 
 // Show the form for creating a new resource
 async function create(req, res) {}
