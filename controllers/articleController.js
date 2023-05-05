@@ -1,7 +1,13 @@
 const { Article } = require("../models");
 
 // Display a listing of the resource.
-async function index(req, res) {}
+async function index(req, res) {
+  const article = await Article.findAll();
+  article.forEach((article) => {
+    console.log(article.dataValues.id, article.dataValues.title);
+  });
+  res.render("article", article);
+}
 
 // Display the specified resource.
 async function show(req, res) {}
