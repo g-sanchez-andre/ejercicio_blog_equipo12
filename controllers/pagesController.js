@@ -16,13 +16,21 @@
  * no debería existir.
  */
 
-const { Article } = require("../models");
+const { Article, User } = require("../models");
 
 async function showHome(req, res) {
-  const articles = await Article.findAll();
-  res.render("home", { articles });
+  const article = await Article.findAll({
+    order: ["createdAt"],
+    include: User,
+  });
+
+  // res.json(users);
+  res.render("home", {
+    article: article,
+  });
 }
 
+/*============= sin uso =============*/
 async function showContact(req, res) {
   res.render("contact");
 }
@@ -30,7 +38,7 @@ async function showContact(req, res) {
 async function showAboutUs(req, res) {
   res.render("aboutUs");
 }
-
+/*============= sin uso =============*/
 // Otros handlers...
 // ...
 
