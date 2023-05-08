@@ -29,7 +29,7 @@ module.exports = async () => {
       content: faker.lorem.paragraphs(),
       userId: faker.datatype.number({
         min: 1,
-        max: 5,
+        max: 30,
       }),
     });
   }

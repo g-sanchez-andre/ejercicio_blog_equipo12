@@ -5,7 +5,7 @@ const articleController = require("../controllers/articleController");
 // Rutas relacionadas a los artículos:
 // ...
 
-router.get("/", articleController.index);
+//router.get("/", articleController.index);
 router.get("/crear", articleController.create);
 router.post("/", articleController.store);
 router.get("/:id", articleController.show);

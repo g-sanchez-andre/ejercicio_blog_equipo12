@@ -33,8 +33,11 @@
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12 text-center text-white">
-                        <h1><strong>Hack the Blog</strong></h1>
-                        <p>El Blog de Hack Academy</p>
+                        <h1><strong>
+                                <%= article.title %>
+                            </strong></h1>
+                        <p>Creado por <%= article.user.firstname %> el <%= article.createdAt %>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -42,13 +45,37 @@
         <!--============================== SECTION: HERO ==============================-->
         <!--============================== SECTION: ARTICLES ==============================-->
         <section class="container">
-
-            <h1>
-                <%= article.title %>
-            </h1>
-
+            <p>
+                <%=article.content%>
+            </p>
+        </section>
+        <!--============================== SECTION: COMMENTS ==============================-->
+        <section class="container">
+            <h2><strong>Add your comment</strong></h2>
+            <form method="post" action="/comentarios/crear">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Name" />
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control mb-3" rows="10" id="content"></textarea>
+                    <button type="submit" class="btn btn-primary btn-block w-100">
+                        Submit
+                    </button>
+                </div>
+            </form>
+            <h3>Comments (<%=comment.length%>)</h3>
+            <% for (let item of comment) { %>
+                <p class="font-italic">
+                    "<%=item.content%>"
+                </p>
+                <small>
+                    <%=item.user.firstname%>
+                </small>
+                <hr class="mb-4" style="border-color: #666" />
+                <%}%>
 
         </section>
+        <!--============================== SECTION: COMMENTS ==============================-->
 
         <!--============================== FOOTER ==============================-->
 

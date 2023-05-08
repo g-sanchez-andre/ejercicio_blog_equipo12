@@ -1,7 +1,7 @@
-const { Article } = require("../models");
+const { Article, User, Comment } = require("../models");
 
 // Display a listing of the resource.
-async function index(req, res) {
+/*async function index(req, res) {
   const article = await Article.findAll();
   article.forEach((article) => {
     console.log(article.id, article.title);
@@ -10,19 +10,43 @@ async function index(req, res) {
     article: article,
   });
 }
-
+*/
 // Display the specified resource.
 async function show(req, res) {
   const articleId = req.params.id;
-  const article = await Article.findByPk(articleId);
-
+  const article = await Article.findByPk(articleId, {
+    include: [
+      {
+        model: User,
+        attributes: ["id", "firstname", "lastname"],
+      },
+    ],
+  });
+  const comment = await Comment.findAll({
+    where: {
+      articleId: articleId,
+    },
+    include: { model: User },
+  });
   res.render("article", {
     article: article,
+    comment: comment,
   });
 }
 
 // Show the form for creating a new resource
-async function create(req, res) {}
+async function create(req, res) {
+  //const { content, articleId, userId } = req.body;
+  /*const content = req.body.content;
+  const articleId = req.body.articleId;
+  const userId = req.body.userId;
+  const comment = await Comment.create({
+    content: content,
+    articleId: articleId,
+    userId: userId,
+  });*/
+  console.log(req.body);
+}
 
 // Store a newly created resource in storage.
 async function store(req, res) {}
@@ -40,7 +64,7 @@ async function destroy(req, res) {}
 // ...
 
 module.exports = {
-  index,
+  //index,
   show,
   create,
   store,
