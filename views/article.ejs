@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,74 +12,74 @@
     <!-- FIN llamado a kit de iconos -->
 
     <!--llamado a BOOTSTRAP-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="../public/css/styles.css" />
     <!--FIN llamado a BOOTSTRAP-->
-  </head>
+</head>
 
-  <body>
+<body>
     <!--============================== NAVBAR ==============================-->
     <%- include("partials/navbar") %>
-    <!--============================== NAVBAR ==============================-->
+        <!--============================== NAVBAR ==============================-->
 
-    <!--============================== SECTION: HERO ==============================-->
-    <section
-      class="hero-section bg-image"
-      style="
+        <!--============================== SECTION: HERO ==============================-->
+        <section class="hero-section bg-image" style="
         background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
           url('/img/home_cover.jpg');
         height: 35vh;
         background-size: cover;
-      "
-    >
-      <div class="container h-100">
-        <div class="row h-100 align-items-center">
-          <div class="col-12 text-center text-white">
-            <h1><strong> <%= article.title %> </strong></h1>
-            <p>Creado por <%= article.user.firstname %> el <%= article.createdAt %></p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--============================== SECTION: HERO ==============================-->
-    <!--============================== SECTION: ARTICLES ==============================-->
-    <section class="container">
-      <p><%=article.content%></p>
-    </section>
-    <!--============================== SECTION: COMMENTS ==============================-->
-    <section class="container">
-      <h2><strong>Add your comment</strong></h2>
-      <form method="post" action="/comentarios/crear">
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="Name" />
-        </div>
-        <div class="mb-3">
-          <textarea class="form-control mb-3" rows="10" id="content"></textarea>
-          <button type="submit" class="btn btn-primary btn-block w-100">Submit</button>
-        </div>
-      </form>
-      <h3>Comments (<%=comment.length%>)</h3>
-      <% for (let item of comment) { %>
-      <p class="font-italic">"<%=item.content%>"</p>
-      <small> <%=item.user.firstname%> </small>
-      <hr class="mb-4" style="border-color: #666" />
-      <%}%>
-    </section>
-    <!--============================== SECTION: COMMENTS ==============================-->
+      ">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 text-center text-white">
+                        <h1><strong>
+                                <%= article.title %>
+                            </strong></h1>
+                        <p>Creado por <%= article.user.firstname %> el <%= article.createdAt %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--============================== SECTION: HERO ==============================-->
+        <!--============================== SECTION: ARTICLES ==============================-->
+        <section class="container">
+            <p>
+                <%=article.content%>
+            </p>
+        </section>
+        <!--============================== SECTION: COMMENTS ==============================-->
+        <section class="container">
+            <h2><strong>Add your comment</strong></h2>
+            <form method="post" action="/comentarios/crear">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="name" placeholder="Name" />
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control mb-3" rows="10" name="content"></textarea>
+                    <button type="submit" class="btn btn-primary btn-block w-100">Submit</button>
+                </div>
+                <input type="text" class="form-control d-none" name="articleId" value="<%=article.id%>" />
+            </form>
+            <h3>Comments (<%=comment.length%>)</h3>
+            <% for (let item of comment) { %>
+                <p class="font-italic">"<%=item.content%>"</p>
+                <small>
+                    <%=item.user.firstname + " " +item.user.lastname%>
+                </small>
+                <hr class="mb-4" style="border-color: #666" />
+                <%}%>
+        </section>
+        <!--============================== SECTION: COMMENTS ==============================-->
 
-    <!--============================== FOOTER ==============================-->
+        <!--============================== FOOTER ==============================-->
 
-    <%- include("partials/footer") %>
-    <!--============================== FOOTER ==============================-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+        <%- include("partials/footer") %>
+            <!--============================== FOOTER ==============================-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+                crossorigin="anonymous"></script>
+</body>
+
 </html>
