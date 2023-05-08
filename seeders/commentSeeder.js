@@ -23,12 +23,12 @@ faker.locale = "es";
 module.exports = async () => {
   const comments = [];
 
-  for (let i = 0; i < 300; i++) {
+  for (let i = 0; i < 150; i++) {
     comments.push({
       content: faker.lorem.paragraph(15),
       articleId: faker.datatype.number({
         min: 101,
-        max: 200,
+        max: 150,
       }),
       userId: faker.datatype.number({
         min: 1,

@@ -26,7 +26,7 @@ module.exports = async () => {
   for (let i = 0; i < 50; i++) {
     articles.push({
       title: faker.lorem.sentence(5),
-      content: faker.lorem.paragraphs(),
+      content: faker.lorem.paragraphs(10),
       userId: faker.datatype.number({
         min: 1,
         max: 30,
