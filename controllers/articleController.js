@@ -45,6 +45,7 @@ async function create(req, res) {
     articleId: articleId,
     userId: await userIdprueba(nameArray[0], nameArray[1]),
   });
+  res.redirect(`/articulos/${articleId}`);
 }
 
 async function userIdprueba(nombre, apellido) {
