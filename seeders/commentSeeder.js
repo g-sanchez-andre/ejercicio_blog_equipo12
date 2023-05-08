@@ -27,8 +27,8 @@ module.exports = async () => {
     comments.push({
       content: faker.lorem.paragraph(15),
       articleId: faker.datatype.number({
-        min: 151,
-        max: 200,
+        min: 51,
+        max: 100,
       }),
     });
   }

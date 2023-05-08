@@ -32,13 +32,34 @@ async function create(req, res) {
 async function store(req, res) {}
 
 // Show the form for editing the specified resource.
-async function edit(req, res) {}
+async function edit(req, res) {
+  const articleId = req.params.id;
+  const article = await Article.findByPk(articleId, {
+    include: [
+      {
+        model: User,
+        attributes: ["id", "firstname", "lastname"],
+      },
+    ],
+  });
+  res.render("editArticle", {
+    article: article,
+  });
+}
 
 // Update the specified resource in storage.
 async function update(req, res) {}
 
 // Remove the specified resource from storage.
-async function destroy(req, res) {}
+async function destroy(req, res) {
+  const articleId = req.params.id;
+  await Article.destroy({
+    where: {
+      id: articleId,
+    },
+  });
+  res.redirect("/admin");
+}
 
 // Otros handlers...
 // ...
