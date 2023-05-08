@@ -27,8 +27,6 @@ async function showHome(req, res) {
       },
     ],
   });
-
-  // res.json(article);
   res.render("home", {
     article: article,
   });

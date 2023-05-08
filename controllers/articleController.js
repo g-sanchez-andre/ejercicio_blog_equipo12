@@ -11,6 +11,7 @@ const { Article, User, Comment } = require("../models");
   });
 }
 */
+
 // Display the specified resource.
 async function show(req, res) {
   const articleId = req.params.id;
@@ -45,6 +46,7 @@ async function create(req, res) {
     articleId: articleId,
     userId: await userIdprueba(nameArray[0], nameArray[1]),
   });
+  res.redirect(`/articulos/${articleId}`);
 }
 
 async function userIdprueba(nombre, apellido) {
@@ -57,7 +59,6 @@ async function userIdprueba(nombre, apellido) {
   return userid.id;
 }
 
-// userIdprueba("Anni Lugo", "Miguel Laboy");
 // Store a newly created resource in storage.
 async function store(req, res) {}
 

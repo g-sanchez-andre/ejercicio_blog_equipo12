@@ -28,7 +28,7 @@
 
     <!--============================== SECTION: HERO ==============================-->
     <section
-      class="hero-section bg-image"
+      class="hero-section bg-image mb-4"
       style="
         background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
           url('/img/home_cover.jpg');
@@ -50,14 +50,17 @@
     <section class="container d-flex flex-column" id="articlesPreview">
       <% for (let item of article) { %>
 
-      <article class="mx-auto my-5 mw-70">
+      <article class="mx-auto mw-70">
         <a class="text-decoration-none text-black" href="/articulos/<%= item.id %>"
           ><h3 class="fw-bold"><%= item.title %></h3>
           <small style="color: #76757d"
-            >Creado por <%= item.user.firstname %> el <%= item.createdAt %></small
+            >Creado por <%= item.user.firstname %> <%= item.user.lastname%> el <%= item.createdAt
+            %></small
           >
         </a>
+        <hr class="mb-4" style="border-color: #666" />
       </article>
+
       <% } %>
     </section>
 

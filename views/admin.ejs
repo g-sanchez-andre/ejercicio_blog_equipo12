@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,72 +11,68 @@
     <!-- FIN llamado a kit de iconos -->
 
     <!--llamado a BOOTSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="../public/css/styles.css" />
     <!--FIN llamado a BOOTSTRAP-->
-</head>
+  </head>
 
-<body>
+  <body>
     <!--============================== NAVBAR ==============================-->
     <%- include("partials/navbar") %>
-        <!--============================== NAVBAR ==============================-->
-        <div class="container-sm shadow">
-            <div class="d-flex flex-direction-row justify-content-between align-items-center">
-                <h1 class="my-3">Listado de articulos</h1>
-                <div>
-                    <a href="/admin/crear" class="btn btn-success" role="button">Nuevo</a>
-                </div>
-            </div>
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Content</th>
-                        <th>Image</th>
-                        <th>Created at</th>
-                        <th>Author</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for(const item of article){ %>
-                        <tr>
-                            <th scope="row">
-                                <%= item.id %>
-                            </th>
-                            <td>
-                                <%= item.title %>
-                            </td>
-                            <td>
-                                <%= item.content.slice(0,100)+" ..." %>
-                            </td>
-                            <td>
-                                "imagen"
-                            </td>
-                            <td>
-                                <%= item.createdAt %>
-                            </td>
-                            <td>
-                                <%=item.user.firstname %>
-                            </td>
-                            <td style="width: 1%" class="text-nowrap">
-                                <a href="/admin/editar/<%= item.id %>" class="btn btn-primary" role="button">Editar</a>
-                                <a href="/admin/eliminar/<%= item.id %>" class="btn btn-danger"
-                                    role="button">Eliminar</a>
-                            </td>
-                        </tr>
-                        <% } %>
-                </tbody>
-            </table>
+    <!--============================== NAVBAR ==============================-->
+    <div class="container-sm shadow">
+      <div class="d-flex flex-direction-row justify-content-between align-items-center">
+        <h1 class="my-3">Listado de articulos</h1>
+        <div>
+          <a href="/admin/crear" class="btn btn-success" role="button">Nuevo</a>
         </div>
-        <!--============================== FOOTER ==============================-->
+      </div>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Image</th>
+            <th>Created at</th>
+            <th>Author</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(const item of article){ %>
+          <tr>
+            <th scope="row"><%= item.id %></th>
+            <td><%= item.title %></td>
+            <td><%= item.content.slice(0,100)+" ..." %></td>
+            <td>"imagen"</td>
+            <td><%= item.createdAt %></td>
+            <td><%=item.user.firstname %> <%= item.user.lastname%></td>
+            <td style="width: 1%" class="text-nowrap">
+              <a href="/admin/editar/<%= item.id %>" class="btn btn-primary" role="button"
+                >Editar</a
+              >
+              <a href="/admin/eliminar/<%= item.id %>" class="btn btn-danger" role="button"
+                >Eliminar</a
+              >
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <!--============================== FOOTER ==============================-->
 
-        <%- include("partials/footer") %>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-                crossorigin="anonymous"></script>
-</body>
-
+    <%- include("partials/footer") %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

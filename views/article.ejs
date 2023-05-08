@@ -62,8 +62,10 @@
           <button type="submit" class="btn btn-primary btn-block w-100">Submit</button>
         </div>
         <input type="text" class="form-control d-none" name="articleId" value="<%=article.id%>" />
+        <!--auxiliar para tener ARTICLEID-->
       </form>
       <h3>Comments (<%=comment.length%>)</h3>
+
       <% for (let item of comment) { %>
       <p class="font-italic">"<%=item.content%>"</p>
       <small> <%=item.user.firstname + " " +item.user.lastname%> </small>
