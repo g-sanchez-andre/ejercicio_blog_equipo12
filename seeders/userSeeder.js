@@ -25,8 +25,8 @@ module.exports = async () => {
 
   for (let i = 0; i < 30; i++) {
     users.push({
-      firstname: faker.name.findName(),
-      lastname: faker.name.findName(),
+      firstname: faker.name.firstName(),
+      lastname: faker.name.lastName(),
     });
   }
 

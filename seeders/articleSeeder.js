@@ -31,6 +31,7 @@ module.exports = async () => {
         min: 1,
         max: 30,
       }),
+      image: "articleCover_2.jpg",
     });
   }
 
