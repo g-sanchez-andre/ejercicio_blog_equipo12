@@ -8,6 +8,12 @@ const { Article, User } = require("../models");
 async function index(req, res) {
   const article = await Article.findAll({
     order: ["createdAt"],
+    include: [
+      {
+        model: User,
+        attributes: ["id", "firstname", "lastname"],
+      },
+    ],
   });
   res.render("admin", {
     article: article,
