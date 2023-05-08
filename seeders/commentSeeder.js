@@ -26,6 +26,10 @@ module.exports = async () => {
   for (let i = 0; i < 30; i++) {
     comments.push({
       content: faker.lorem.paragraph(15),
+      articleId: faker.datatype.number({
+        min: 151,
+        max: 200,
+      }),
     });
   }
 
