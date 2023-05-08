@@ -36,18 +36,32 @@ async function show(req, res) {
 
 // Show the form for creating a new resource
 async function create(req, res) {
-  //const { content, articleId, userId } = req.body;
+  const { content, name, articleId } = req.body;
+
+  console.log(articleId);
   /*const content = req.body.content;
-  const articleId = req.body.articleId;
-  const userId = req.body.userId;
+  const articleId = req.params.id;
+  const userId = req.body.name;*/
+  nameArray = name.split(" ");
+
   const comment = await Comment.create({
     content: content,
     articleId: articleId,
-    userId: userId,
-  });*/
+    userId: userIdprueba(nameArray[0], nameArray[1]),
+  });
   console.log(req.body);
+  console.log(comment);
 }
-
+async function userIdprueba(nombre, apellido) {
+  const userid = await User.findOne({
+    where: {
+      firstname: nombre,
+      lastname: apellido,
+    },
+  });
+  return userid.id;
+}
+userIdprueba("Anni Lugo", "Miguel Laboy");
 // Store a newly created resource in storage.
 async function store(req, res) {}
 
