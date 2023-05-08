@@ -20,19 +20,23 @@ const { Article, User } = require("../models");
 
 async function showHome(req, res) {
   const article = await Article.findAll({
-    order: ["createdAt"],
-    include: User,
+    include: [
+      {
+        model: User,
+        attributes: ["id", "firstname", "lastname"],
+      },
+    ],
   });
 
-  // res.json(users);
+  // res.json(article);
   res.render("home", {
     article: article,
   });
 }
 
 /*============= sin uso =============*/
-async function showContact(req, res) {
-  res.render("contact");
+async function showPanel(req, res) {
+  res.render("newArticle");
 }
 
 async function showAboutUs(req, res) {
@@ -44,6 +48,6 @@ async function showAboutUs(req, res) {
 
 module.exports = {
   showHome,
-  showContact,
+  showPanel,
   showAboutUs,
 };
