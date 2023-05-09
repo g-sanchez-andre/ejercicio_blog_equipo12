@@ -6,8 +6,12 @@ const userController = require("../controllers/userController");
 // ...
 
 router.get("/", userController.index);
-router.get("/crear", userController.create);
-router.post("/", userController.store);
+router.get("/registro", userController.create);
+router.post("/registro", userController.store);
+router.get("/login", userController.create);
+router.post("/login", userController.store);
+router.get("/logout", userController.create);
+
 router.get("/:id", userController.show);
 router.get("/:id/editar", userController.edit);
 router.patch("/:id", userController.update);
