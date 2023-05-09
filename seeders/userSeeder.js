@@ -30,6 +30,7 @@ module.exports = async () => {
     users.push({
       firstname: faker.name.firstName(),
       lastname: faker.name.lastName(),
+      email: faker.internet.email(),
     });
   }
 
