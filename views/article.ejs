@@ -53,7 +53,7 @@
     <!--============================== SECTION: COMMENTS ==============================-->
     <section class="container">
       <h2><strong>Add your comment</strong></h2>
-      <form method="post" action="/comentarios/crear">
+      <form method="post">
         <div class="mb-3">
           <input type="text" class="form-control" name="name" placeholder="Name" />
         </div>
@@ -61,8 +61,8 @@
           <textarea class="form-control mb-3" rows="10" name="content"></textarea>
           <button type="submit" class="btn btn-primary btn-block w-100">Submit</button>
         </div>
-        <input type="text" class="form-control d-none" name="articleId" value="<%=article.id%>" />
-        <!--auxiliar para tener ARTICLEID-->
+        <!-- <input type="text" class="form-control d-none" name="articleId" value="<%=article.id%>" />
+        auxiliar para tener ARTICLEID -->
       </form>
       <h3>Comments (<%=comment.length%>)</h3>
 

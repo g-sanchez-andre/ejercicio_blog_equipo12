@@ -1,16 +1,6 @@
 const { Article, User, Comment } = require("../models");
 
 // Display a listing of the resource.
-/*async function index(req, res) {
-  const article = await Article.findAll();
-  article.forEach((article) => {
-    console.log(article.id, article.title);
-  });
-  res.render("article", {
-    article: article,
-  });
-}
-*/
 
 // Display the specified resource.
 async function show(req, res) {
@@ -36,31 +26,20 @@ async function show(req, res) {
 }
 
 // Show the form for creating a new resource
-async function create(req, res) {
-  const { content, name, articleId } = req.body;
-  console.log(articleId);
-  nameArray = name.split(" ");
+async function create(req, res) {}
 
+// Store a newly created resource in storage.
+async function storeComment(req, res) {
+  const { content } = req.body;
+  const articleId = req.params.id;
   const comment = await Comment.create({
     content: content,
     articleId: articleId,
-    userId: await userIdprueba(nameArray[0], nameArray[1]),
+    userId: 1,
   });
-  res.redirect(`/articulos/${articleId}`);
+  console.log(articleId);
+  return res.redirect(`/articulos/${articleId}`);
 }
-
-async function userIdprueba(nombre, apellido) {
-  const userid = await User.findOne({
-    where: {
-      firstname: nombre,
-      lastname: apellido,
-    },
-  });
-  return userid.id;
-}
-
-// Store a newly created resource in storage.
-async function store(req, res) {}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
@@ -78,7 +57,7 @@ module.exports = {
   //index,
   show,
   create,
-  store,
+  storeComment,
   edit,
   update,
   destroy,
