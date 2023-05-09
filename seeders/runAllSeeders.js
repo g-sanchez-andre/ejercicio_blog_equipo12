@@ -21,8 +21,8 @@ require("dotenv").config();
  * comentarios, habría que ejectuar:
  */
 async function runAllSeeders() {
-  // await require("./articleSeeder")();
-  // await require("./userSeeder")();
+  await require("./userSeeder")();
+  await require("./articleSeeder")();
   await require("./commentSeeder")();
   console.log("[Database] ¡Los datos de prueba fueron insertados!");
 }
