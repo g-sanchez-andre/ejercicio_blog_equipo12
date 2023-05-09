@@ -4,13 +4,23 @@ const { User } = require("../models");
 async function index(req, res) {}
 
 // Display the specified resource.
-async function show(req, res) {}
+async function show(req, res) {
+  res.render("login");
+}
 
 // Show the form for creating a new resource
-async function create(req, res) {}
+async function create(req, res) {
+  res.render("register");
+}
 
 // Store a newly created resource in storage.
 async function store(req, res) {}
+
+// Login
+async function login(req, res) {}
+
+// Logout
+async function logout(req, res) {}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
@@ -25,11 +35,13 @@ async function destroy(req, res) {}
 // ...
 
 module.exports = {
-  index,
+  // index,
   show,
   create,
   store,
-  edit,
-  update,
-  destroy,
+  login,
+  logout,
+  // edit,
+  // update,
+  // destroy,
 };

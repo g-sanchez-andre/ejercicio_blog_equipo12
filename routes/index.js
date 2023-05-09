@@ -28,7 +28,7 @@ module.exports = (app) => {
    * en inglés.
    */
 
-  app.use("/usuarios", userRoutes);
+  app.use("/", userRoutes);
   app.use("/articulos", articleRoutes);
   app.use("/articulos", commentRoutes);
 
