@@ -2,6 +2,7 @@
  * Este archivo se puede usar como referencia para crear el controlador de
  * admin del sistema.*/
 
+const { where } = require("sequelize");
 const { Article, User } = require("../models");
 
 // Display a listing of the resource.
@@ -29,7 +30,15 @@ async function create(req, res) {
 }
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+async function store(req, res) {
+  const { title, content } = req.body;
+  const article = await Article.create({
+    title: title,
+    content: content,
+    userId: 1,
+  });
+  return res.redirect("/admin");
+}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {
@@ -48,7 +57,23 @@ async function edit(req, res) {
 }
 
 // Update the specified resource in storage.
-async function update(req, res) {}
+async function update(req, res) {
+  const { title, content } = req.body;
+
+  const article = await Article.update(
+    {
+      title: title,
+      content: content,
+      userId: 1,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    },
+  );
+  return res.redirect("/admin");
+}
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {
