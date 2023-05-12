@@ -27,14 +27,18 @@
     <!--============================== NAVBAR ==============================-->
     <div class="d-flex vh-100">
       <section class="container">
+        <% if (messages.error) { %>
+        <div class="alert alert-danger mt-3"><%= messages.error %></div>
+        <% } %>
         <div class="border border-4 shadow m-5 rounded p-3 mb-3">
-          <form class="container mt-4" method="POST" action="/login">
+          <form class="container mt-4" method="POST" action="/user/login">
             <legend>Login</legend>
 
             <div class="form-group mb-3">
               <label for="exampleInputEmail1">Email address</label>
               <input
                 type="email"
+                name="email"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
@@ -48,6 +52,7 @@
               <label for="exampleInputPassword1">Password</label>
               <input
                 type="password"
+                name="password"
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"

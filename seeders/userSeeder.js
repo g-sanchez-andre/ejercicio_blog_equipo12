@@ -22,10 +22,10 @@ faker.locale = "es";
 
 module.exports = async () => {
   const users = [];
-  users.push({
-    firstname: "Anonymus",
-    lastname: "",
-  });
+  // users.push({
+  //   firstname: "Anonymus",
+  //   lastname: "",
+  // });
   for (let i = 1; i < 30; i++) {
     users.push({
       firstname: faker.name.firstName(),

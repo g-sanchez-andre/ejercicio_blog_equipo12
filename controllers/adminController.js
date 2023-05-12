@@ -7,7 +7,8 @@ const { Article, User } = require("../models");
 
 // Display a listing of the resource.
 async function index(req, res) {
-  const article = await Article.findAll({
+  const userArticle = await Article.findAll({
+    where: { userId: req.user.id },
     order: ["createdAt"],
     include: [
       {
@@ -17,7 +18,7 @@ async function index(req, res) {
     ],
   });
   res.render("admin", {
-    article: article,
+    userArticle: userArticle,
   });
 }
 
@@ -35,7 +36,7 @@ async function store(req, res) {
   const article = await Article.create({
     title: title,
     content: content,
-    userId: 1,
+    userId: req.user.id,
   });
   return res.redirect("/admin");
 }
@@ -64,7 +65,7 @@ async function update(req, res) {
     {
       title: title,
       content: content,
-      userId: 1,
+      userId: req.user.id,
     },
     {
       where: {

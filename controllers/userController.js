@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const authController = require("../controllers/authController");
 
 // Display a listing of the resource.
 async function index(req, res) {}
@@ -14,13 +15,23 @@ async function create(req, res) {
 }
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
-
-// Login
-async function login(req, res) {}
-
-// Logout
-async function logout(req, res) {}
+async function store(req, res) {
+  const { firstname, lastname, email, password } = req.body;
+  const [user, created] = await User.findOrCreate({
+    where: { email: email },
+    defaults: {
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      password: password,
+    },
+  });
+  if (created) {
+    req.login(user, () => res.redirect("/admin"));
+  } else {
+    res.redirect("back");
+  }
+}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
@@ -39,8 +50,6 @@ module.exports = {
   show,
   create,
   store,
-  login,
-  logout,
   // edit,
   // update,
   // destroy,

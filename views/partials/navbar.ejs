@@ -4,9 +4,19 @@
       ><strong>Hack the Blog</strong></a
     >
     <div>
-      <a href="/login" class="btn btn-primary btn-sm" role="button">Login</a>
-      <a href="/registro" class="btn btn-primary btn-sm" role="button">Register</a>
-      <a href="/admin" class="btn btn-primary btn-sm" role="button">Admin</a>
+      <a href="/user/registro" class="btn btn-primary btn-sm" <%if (!user) {%>
+        style="display:inline" <%}else{%> style="display:none" <%}%> role="button">Register</a
+      >
+      <a href="/user/login" class="btn btn-primary btn-sm" <%if (!user) {%>
+        style="display:inline" <%}else{%> style="display:none" <%}%> role="button">Login</a
+      >
+      <a href="/admin" class="btn btn-primary btn-sm" <%if (!user) {%>
+        style="display:none" <%}else{%> style="display:inline" <%}%> role="button">Admin</a
+      >
+      <a href="/user/logout" <%if (!user) {%>
+        style="display:none" <%}else{%> style="display:inline" <%}%> class="btn btn-danger btn-sm"
+        role="button">Logout</a
+      >
     </div>
   </div>
 </nav>
