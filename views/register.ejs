@@ -28,15 +28,32 @@
     <div class="d-flex vh-100">
       <section class="container">
         <div class="border border-4 shadow m-5 rounded p-3 mb-3">
-          <form class="container mt-4">
+          <form class="container mt-4" method="POST" action="/users/registro">
             <legend>Register new user</legend>
 
             <div class="form-group mb-3">
+              <label for="">Firstname</label>
+              <input
+                type="text"
+                class="form-control"
+                name="firstname"
+                id="firstname"
+                placeholder="Write your firstname"
+              />
+              <label for="">Lastname</label>
+              <input
+                type="text"
+                name="lastname"
+                class="form-control"
+                id="lastname"
+                placeholder="Write your lastname"
+              />
               <label for="exampleInputEmail1">Email address</label>
               <input
                 type="email"
                 class="form-control"
-                id="exampleInputEmail1"
+                name="email"
+                id="email1"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
               />
@@ -48,11 +65,13 @@
               <label for="exampleInputPassword1">Password</label>
               <input
                 type="password"
+                name="password"
                 class="form-control"
-                id="exampleInputPassword1"
+                id="password"
                 placeholder="Password"
               />
             </div>
+
             <button type="submit" class="btn btn-primary">Register</button>
           </form>
         </div>

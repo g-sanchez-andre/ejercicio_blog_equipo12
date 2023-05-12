@@ -14,7 +14,23 @@ async function create(req, res) {
 }
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+async function store(req, res) {
+  const { firstname, lastname, email, password } = req.body;
+  const [user, created] = await User.findOrCreate({
+    where: { email: email },
+    defaults: {
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      password: password,
+    },
+  });
+  if (created) {
+    req.login(user, () => res.redirect("/admin"));
+  } else {
+    res.redirect("back");
+  }
+}
 
 // Login
 async function login(req, res) {}
@@ -41,6 +57,7 @@ module.exports = {
   store,
   login,
   logout,
+
   // edit,
   // update,
   // destroy,

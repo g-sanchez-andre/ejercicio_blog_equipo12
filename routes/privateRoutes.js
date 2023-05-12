@@ -1,9 +1,11 @@
 const express = require("express");
+const ensureAuthenticated = require("../middleware/ensureAuthenticated");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
 
-// Rutas relacionadas al panel de control (Admin):
 // ...
+// Rutas relacionadas al panel de control (Admin):
+router.use("/", ensureAuthenticated);
 router.get("/", adminController.index);
 router.get("/crear", adminController.create);
 router.get("/editar/:id", adminController.edit);
