@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const authController = require("../controllers/authController");
 
 // Display a listing of the resource.
 async function index(req, res) {}
@@ -55,9 +56,6 @@ module.exports = {
   show,
   create,
   store,
-  login,
-  logout,
-
   // edit,
   // update,
   // destroy,

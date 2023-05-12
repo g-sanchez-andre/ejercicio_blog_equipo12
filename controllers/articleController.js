@@ -24,7 +24,6 @@ async function show(req, res) {
     comment: comment,
   });
 }
-
 // Show the form for creating a new resource
 async function create(req, res) {}
 
@@ -35,7 +34,7 @@ async function storeComment(req, res) {
   const comment = await Comment.create({
     content: content,
     articleId: articleId,
-    userId: 1,
+    userId: req.user.id,
   });
   console.log(articleId);
   return res.redirect(`/articulos/${articleId}`);

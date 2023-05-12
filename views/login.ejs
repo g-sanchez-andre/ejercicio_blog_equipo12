@@ -27,11 +27,11 @@
     <!--============================== NAVBAR ==============================-->
     <div class="d-flex vh-100">
       <section class="container">
-        <% if(messages.error) { %>
-        <div class="alert alert-danger"><%= messages.error %></div>
+        <% if (messages.error) { %>
+        <div class="alert alert-danger mt-3"><%= messages.error %></div>
         <% } %>
         <div class="border border-4 shadow m-5 rounded p-3 mb-3">
-          <form class="container mt-4" method="POST" action="/users/login">
+          <form class="container mt-4" method="POST" action="/user/login">
             <legend>Login</legend>
 
             <div class="form-group mb-3">

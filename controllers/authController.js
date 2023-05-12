@@ -7,15 +7,15 @@ function login(req, res) {
     failureFlash: true,
   })(req, res);
 }
+
 function logout(req, res) {
   req.logout(function (err) {
     if (err) {
       return next(err);
     }
-    res.redirect("/users/login");
+    res.redirect("/");
   });
+  console.log("Logout successful");
 }
-module.exports = {
-  login,
-  logout,
-};
+
+module.exports = { login, logout };
